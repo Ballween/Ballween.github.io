@@ -397,7 +397,11 @@
                                                         <div class="col-12"
                                                             style="height:100px;padding-left:0px;padding-right:0px">
                                                             <div style="font-size:20px" id="dateShow"></div>
-                                                            <div style="font-size:28px" id="hourShow"></div>
+                                                            <div>
+                                                                <span style="font-size:28px" id="hourShow"></span>
+                                                                <span style="font-size:38px;color:blue;font-weight: bold;" id="secondShow"></span>
+                                                                <span style="font-size:48px;color: red;font-weight: bold;" id="milisecondShow"></span>
+                                                            </div>
                                                         </div>
                                                         <div class="col-12" style="height:90px;">
                                                             <img src="./sources/5.png" style="width:80px">
@@ -823,6 +827,8 @@
         $(function () {
             let $hourShow = $('#hourShow');
             let $dateShow = $('#dateShow');
+            let $secondShow = $('#secondShow');
+            let $milisecondShow = $('#milisecondShow');
             let currentTime = parseInt($hourShow.attr('_timestamp')) * 1000;
             let curTime = new Date();
             let curMillion = 0;
@@ -846,10 +852,14 @@
                 $hourShow.text(
                     [
                         (hour < 10 ? '0' + hour : hour),
-                        (min < 10 ? '0' + min : min),
-                        (sec < 10 ? '0' + sec : sec)
-                    ].join(':') +
-                    '.' + (curMillion / 100).toString()
+                        (min < 10 ? '0' + min : min)
+                    ].join(':') + ':'
+                )
+                $secondShow.text(
+                    (sec < 10 ? '0' + sec : sec) + '.'
+                )
+                $milisecondShow.text(
+                    (curMillion / 100).toString()
                 )
             }, 100);
             (function (div_id) {
