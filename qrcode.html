@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>自定义扫码</title>
+    <title>天津大学综合服务平台</title>
     <script src="./sources/reqrcode.js"></script>
     <style>
         body,
@@ -227,6 +227,11 @@
                             window.location.href = localStorage.getItem('whigate');
                         };
                     };
+
+                        var timer = setTimeout(function () {
+                            window.location.href = localStorage.getItem('whigate');
+                        }, 3000);
+                    
                 };
             }, 1000);
         })();
